@@ -6,19 +6,17 @@ console.log(parseInt(numeroKilometri));
 const numeroAnni = prompt("Quanti anni hai?")
 console.log(parseInt(numeroAnni));
 
-// Il prezzo del viaggio è di 21 centesimi al Kilometro
-const prezzo = (numeroKilometri * 0.21)
-console.log(prezzo);
-
 // Se il cliente è minorenno si applica uno sconto del 20%, se è over 65 del 40%
+const prezzoMinorenne = (((0.21 * numeroKilometri) / 100)* 80)
+const prezzoOver65 = (((0.21 * numeroKilometri) / 100)* 60)
+let prezzo
 
 if (numeroAnni < 18) {
-    const discount20 = ((prezzo / 100) * 80);
-    console.log (discount20);
-
+    prezzo = prezzoMinorenne.toPrecision(3)
+    console.log(parseFloat(prezzoMinorenne.toPrecision(3)));
 } else if (numeroAnni > 65) {
-    const discount40 = (prezzo/100)*60;
-    console.log (discount40);
-    
+    prezzo = prezzoOver65.toPrecision(3)
+    console.log(parseFloat(prezzoOver65.toPrecision(3)));    
 }
 
+document.getElementById("prezzo-finale").innerHTML = "Il prezzo del tuo biglietto è €" + prezzo;
